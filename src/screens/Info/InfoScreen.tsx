@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {InfoScreenProps} from '../../types/navigations';
 import {Icon} from '@rneui/themed';
+import CharacterList from './components/Characters/CharacterList';
 
 const InfoScreen: React.FC<InfoScreenProps> = ({navigation, route}) => {
   let {data, name} = route.params;
@@ -21,8 +22,8 @@ const InfoScreen: React.FC<InfoScreenProps> = ({navigation, route}) => {
   }, []);
 
   return (
-    <View>
-      <Text>Info</Text>
+    <View style={{flex: 1}}>
+      {name === 'Characters' && <CharacterList characters={data} />}
     </View>
   );
 };

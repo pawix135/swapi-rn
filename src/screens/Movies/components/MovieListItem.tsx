@@ -3,13 +3,13 @@ import {Card, Text} from '@rneui/themed';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {MoviecreenNavigationProp} from '../../../types/navigations';
+import {MovieScreenNavigationProp} from '../../../types/navigations';
 type Props = {
   movie: Film;
 };
 
 const MovieListItem: React.FC<Props> = ({movie}) => {
-  let navigation = useNavigation<MoviecreenNavigationProp>();
+  let navigation = useNavigation<MovieScreenNavigationProp>();
 
   const navigateToMovie = () => {
     navigation.navigate('Movie', {movie});
