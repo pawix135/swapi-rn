@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
-import {Card, Image, Text} from '@rneui/themed';
+import {Card, Text} from '@rneui/themed';
 import React from 'react';
-import {View, Image as ImageRN} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {MoviecreenNavigationProp} from '../../../types/navigations';
 type Props = {
@@ -20,18 +20,24 @@ const MovieListItem: React.FC<Props> = ({movie}) => {
       <Card>
         <Card.Image
           source={movie.poster}
-          style={{height: '100%'}}
-          containerStyle={{flex: 1, width: '100%', aspectRatio: 1}}
+          style={styles.cardImageStyles}
+          containerStyle={styles.cardImageContainerStyles}
           resizeMode="contain"
         />
         <Card.Divider />
         <Card.Title>
           {movie.title} - ({movie.release_date.substring(0, 4)})
         </Card.Title>
-        <Text style={{textAlign: 'center'}}>{movie.director}</Text>
+        <Text style={styles.director}>{movie.director}</Text>
       </Card>
     </TouchableOpacity>
   );
 };
 
 export default MovieListItem;
+
+export const styles = StyleSheet.create({
+  cardImageContainerStyles: {flex: 1, width: '100%', aspectRatio: 1},
+  cardImageStyles: {height: '100%'},
+  director: {textAlign: 'center'},
+});

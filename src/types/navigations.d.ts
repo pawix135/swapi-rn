@@ -9,6 +9,7 @@ type StackNavPropsList = {
 
 type TabNavPropsList = {
   Movies: undefined;
+  Settings: undefined;
 };
 
 type MovieScreenProps = StackScreenProps<StackNavPropsList, 'Movie'>;

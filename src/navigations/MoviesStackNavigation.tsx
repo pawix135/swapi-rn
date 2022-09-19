@@ -11,7 +11,7 @@ const MoviesStackNavigation = () => {
     <Stack.Navigator>
       <Stack.Screen
         name="Home"
-        options={{title: 'Pick movie'}}
+        options={{title: 'Choose movie'}}
         component={MoviesScreen}
       />
       <Stack.Screen name="Movie" options={{title: 'Pick movie'}}>

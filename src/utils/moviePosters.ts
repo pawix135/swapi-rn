@@ -10,11 +10,25 @@ interface CoverPhotosType {
   [key: string]: ImageSourcePropType;
 }
 
-export const episodIdToPoster: CoverPhotosType = {
+//Exports episode_id -> episode poster object
+export const episodeIdToPoster: CoverPhotosType = {
   '1': poster1,
   '2': poster2,
   '3': poster3,
   '4': poster4,
   '5': poster5,
   '6': poster6,
+};
+
+export const handleMovies = (movies: Film[]) => {
+  let modifiedMovies = movies
+    .sort((a, b) => {
+      if (a.episode_id < b.episode_id) return -1;
+      return 1;
+    })
+    .map((item, i) => {
+      item.poster = episodeIdToPoster[item.episode_id];
+      return item;
+    });
+  return modifiedMovies;
 };

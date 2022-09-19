@@ -9,6 +9,7 @@ type Props = {
 
 const MovieList: React.FC<Props> = ({movies}) => {
   return (
+    //Renders list of movies
     <FlatList
       ListEmptyComponent={MovieListSkeleton}
       contentContainerStyle={{paddingBottom: 20}}
