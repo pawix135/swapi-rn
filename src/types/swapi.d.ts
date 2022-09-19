@@ -98,3 +98,10 @@ interface Vehicle {
   pilots: People[];
   films: Film[];
 }
+
+type MovieInfo = Vehicle[] | People[] | Starship[] | Specie[] | Planet[];
+
+type MovieSection = {
+  title: string;
+  data: MovieInfo;
+};

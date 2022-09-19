@@ -5,6 +5,7 @@ import {StackNavigationProp, StackScreenProps} from '@react-navigation/stack';
 type StackNavPropsList = {
   Home: undefined;
   Movie: {movie: Film};
+  Info: {data: MovieInfo; name: string};
 };
 
 type TabNavPropsList = {
@@ -13,8 +14,9 @@ type TabNavPropsList = {
 };
 
 type MovieScreenProps = StackScreenProps<StackNavPropsList, 'Movie'>;
+type InfoScreenProps = StackScreenProps<StackNavPropsList, 'Info'>;
 
-type MoviecreenNavigationProp = CompositeNavigationProp<
+type MovieScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabNavPropsList, 'Movies'>,
   StackNavigationProp<StackNavPropsList>
 >;
