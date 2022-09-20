@@ -34,6 +34,7 @@ interface People {
   species: Specie[];
   starships: Starship[];
   vehicles: Vehicle[];
+  image?: string;
 }
 
 interface Specie {

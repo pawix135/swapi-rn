@@ -4,6 +4,7 @@ import {FlatList} from 'react-native-gesture-handler';
 import CharacterListItem from './CharacterListItem';
 import {arrayOffset, fetchMultiple} from '../../../../utils/fetchUtils';
 import {Card, Skeleton} from '@rneui/themed';
+import {personImage} from '../../../../../person_images';
 
 type Props = {
   characters: string[];
@@ -16,9 +17,6 @@ const CharacterList: React.FC<Props> = ({characters}) => {
   const [offset, setOffset] = React.useState<number>(0);
   const [loading, setLoading] = React.useState<boolean>(false);
 
-  console.log('All characters: ' + characters.length);
-  console.log('Chars: ' + chars.length);
-
   const fetchAllCharacters = async () => {
     setLoading(true);
     let data = await fetchMultiple<People>(characters, offset);
@@ -27,7 +25,15 @@ const CharacterList: React.FC<Props> = ({characters}) => {
     setOffset(bf => bf + 5);
     if (data === null) return;
 
-    setChars(bf => [...bf, ...data!]);
+    setChars(bf => [
+      ...bf,
+      ...data!.map(item => {
+        return {
+          ...item,
+          image: personImage[item.name].image,
+        };
+      }),
+    ]);
   };
 
   React.useEffect(() => {
@@ -36,6 +42,7 @@ const CharacterList: React.FC<Props> = ({characters}) => {
 
   return (
     <FlatList
+      contentContainerStyle={styles.contentContainerStyle}
       onEndReachedThreshold={0.01}
       scrollEventThrottle={250}
       ListFooterComponent={
@@ -80,4 +87,8 @@ const CharacterList: React.FC<Props> = ({characters}) => {
 
 export default CharacterList;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  contentContainerStyle: {
+    paddingBottom: 20,
+  },
+});
